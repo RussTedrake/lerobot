@@ -44,6 +44,7 @@ python lerobot/scripts/push_dataset_to_hub.py \
 
 import argparse
 import json
+import os
 import shutil
 import warnings
 from pathlib import Path
@@ -180,6 +181,8 @@ def push_dataset_to_hub(
 
         meta_data_dir = local_dir / "meta_data"
         videos_dir = local_dir / "videos"
+        os.makedirs(meta_data_dir, exist_ok=True)
+        os.makedirs(videos_dir, exist_ok=True)
     else:
         # Temporary directory used to store images, videos, meta_data
         meta_data_dir = Path(cache_dir) / "meta_data"
